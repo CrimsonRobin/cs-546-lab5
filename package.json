@@ -1,0 +1,11 @@
+{
+  "name": "cs-546-lab5",
+  "version": "1.0.0",
+  "description": "Lab 5 for CS546",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Samuel Miller 10468142",
+  "license": "ISC"
+}
