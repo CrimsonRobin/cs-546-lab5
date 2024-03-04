@@ -12,13 +12,10 @@ router.route('/')
 .get(async (req, res) => {
     try {
         const companyList = await getCompanies();
-        return res.join(companyList);
+        return res.json(companyList);
     } catch (error) {
-        return res.status(500).send(error);
+        return res.status(500).send(error.message);
     }
-})
-.post(async (req, res) => {
-    return res.send('POST request to http://localhost:3000/companies');
 });
 
 //Implement GET Request Method and send a JSON response See lecture code!
@@ -27,17 +24,14 @@ router.route('/:id')
     try {
       req.params.id = helpers.checkId(req.params.id);
     } catch (e) {
-      return res.status(400).json({error: e});
+      return res.status(400).send(e.message);
     }
     try {
       const company = await getCompanyById(req.params.id);
       return res.json(company);
     } catch (e) {
-      return res.status(404).json(e);
+      return res.status(404).send(e.message);
     }
-})
-.post(async (req, res) => {
-    return res.send(`POST request to http://localhost:3000/companies/${req.params.id}`);
 });
 
 export default router;
